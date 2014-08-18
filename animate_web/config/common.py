@@ -232,4 +232,26 @@ class Common(Configuration):
         }
     }
     # END LOGGING CONFIGURATION
+
     REST_FRAMEWORK = { 'PAGINATE_BY': 20}
+
+    ########## CELERY CONFIGURATION
+    import datetime
+    BROKER_URL = 'redis://localhost:6379/0'
+    # BROKER_TRANSPORT_OPTIONS = {'polling_interval': 0.3}
+    CELERY_TIMEZONE = TIME_ZONE
+    CELERY_TASK_SERIALIZER = 'pickle'
+    CELERY_ACCEPT_CONTENT=['pickle']
+    #========Periodic Tasks
+    # CELERYBEAT_SCHEDULE = {
+    # 'get-feeds-every-10-secs': {
+    # 'task': 'core.tasks.update_latest_feed',
+    # 'schedule': datetime.timedelta(seconds=10),
+    # },
+    # 'check-alert-thresholds': {
+    # 'task': 'core.tasks.check_alert_thresholds',
+    # 'schedule': datetime.timedelta(minutes=1),
+    # },
+    # }
+    #========End Periodic Tasks
+    ########## END CELERY CONFIGURATION

@@ -6,15 +6,19 @@ see: http://celery.readthedocs.org/en/latest/django/first-steps-with-django.html
 from __future__ import absolute_import
 
 import os
+from os.path import dirname
+import sys
 
 from celery import Celery
 from django.conf import settings
 
-_SETTINGS_MODULE = 'config'
-_CONFIGURATION_MODULE = 'Production'
+settings_module = 'config.development'
+configuration_module = 'Development'
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', _SETTINGS_MODULE)
-os.environ.setdefault('DJANGO_CONFIGURATION', _CONFIGURATION_MODULE)
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', settings_module)
+os.environ.setdefault('DJANGO_CONFIGURATION', configuration_module)
+
+# sys.path.append(dirname(__file__))
 
 from configurations import importer
 importer.install()
@@ -23,5 +27,5 @@ app = Celery('animate_web')
 
 # Using a string here means the worker will not have to
 # pickle the object when using Windows.
-app.config_from_object('%s:%s' % (_SETTINGS_MODULE, _CONFIGURATION_MODULE))
+app.config_from_object(settings)
 app.autodiscover_tasks(lambda: settings.INSTALLED_APPS)
