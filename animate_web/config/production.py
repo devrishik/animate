@@ -61,7 +61,7 @@ class Production(Common):
 
     STATICFILES_STORAGE = DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 
-    AWS_ACCESS_KEY_ID = values.Value('AKIAIEF4J3Q2TEXCN4PA ')
+    AWS_ACCESS_KEY_ID = values.Value('AKIAIEF4J3Q2TEXCN4PA')
     AWS_SECRET_ACCESS_KEY = values.Value('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')
     AWS_STORAGE_BUCKET_NAME = values.Value('animate_web')
     AWS_AUTO_CREATE_BUCKET = True
