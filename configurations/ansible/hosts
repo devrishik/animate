@@ -1,23 +1,13 @@
 [production]
-dropbox-notifier.fueled.com
+animate
+
 
 [production:vars]
 user=ubuntu
-project_path=/home/ubuntu/dropbox_notify
-repo_version=dev
+project_path=/home/ubuntu/animate
+repo_version=master
 django_requirements_file=configurations/pip/production.txt
 django_configuration=Production
-pg_db=dropbox_notify
+pg_db=animate_web
 pg_user=dev
 pg_password=password
-
-
-[vagrant]
-192.168.1.10
-
-[vagrant:vars]
-vm=1
-user=vagrant
-django_configuration_settings=Development
-project_path=/home/vagrant/animate_web
-django_requirements_file: configurations/pip/development.txt

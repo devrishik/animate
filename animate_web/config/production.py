@@ -14,12 +14,20 @@ class Production(Common):
     INSTALLED_APPS = Common.INSTALLED_APPS
     # END INSTALLED_APPS
 
+    # DATABASE CONFIGURATION
+    # See: https://docs.djangoproject.com/en/dev/ref/settings/#databases
+    DATABASES = values.DatabaseURLValue('postgres://animate:password@localhost/animate_web')
+    # END DATABASE CONFIGURATION
+
     # SECRET KEY
     SECRET_KEY = values.SecretValue()
     # END SECRET KEY
 
     # django-secure
-    INSTALLED_APPS += ("djangosecure", )
+    INSTALLED_APPS += (
+        "djangosecure", 
+        "s3_folder_storage", # static and media to S3 seperately
+    )
 
     # set this to 60 seconds and then to 518400 when you can prove it works
     SECURE_HSTS_SECONDS = 60
@@ -53,9 +61,9 @@ class Production(Common):
 
     STATICFILES_STORAGE = DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 
-    AWS_ACCESS_KEY_ID = values.SecretValue()
-    AWS_SECRET_ACCESS_KEY = values.SecretValue()
-    AWS_STORAGE_BUCKET_NAME = values.SecretValue()
+    AWS_ACCESS_KEY_ID = values.Value('AKIAIEF4J3Q2TEXCN4PA ')
+    AWS_SECRET_ACCESS_KEY = values.Value('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')
+    AWS_STORAGE_BUCKET_NAME = values.Value('animate_web')
     AWS_AUTO_CREATE_BUCKET = True
     AWS_QUERYSTRING_AUTH = False
 
@@ -73,17 +81,6 @@ class Production(Common):
     # See: https://docs.djangoproject.com/en/dev/ref/settings/#static-url
     STATIC_URL = 'https://s3.amazonaws.com/%s/' % AWS_STORAGE_BUCKET_NAME
     # END STORAGE CONFIGURATION
-
-    # Email
-    DEFAULT_FROM_EMAIL = values.Value('Animate <noreply@example.com>')
-    EMAIL_HOST = values.Value('smtp.sendgrid.com')
-    EMAIL_HOST_PASSWORD = values.SecretValue(environ_prefix="", environ_name="SENDGRID_PASSWORD")
-    EMAIL_HOST_USER = values.SecretValue(environ_prefix="", environ_name="SENDGRID_USERNAME")
-    EMAIL_PORT = values.IntegerValue(587, environ_prefix="", environ_name="EMAIL_PORT")
-    EMAIL_SUBJECT_PREFIX = values.Value('[] ', environ_name="EMAIL_SUBJECT_PREFIX")
-    EMAIL_USE_TLS = True
-    SERVER_EMAIL = DEFAULT_FROM_EMAIL
-    # END EMAIL
 
     try:
         # see: https://github.com/rdegges/django-heroku-memcacheify#install

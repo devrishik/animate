@@ -1,5 +1,6 @@
 ---
 project_name: animate_web
-project_repo_url: git@github.com:Fueled/repo_name.git
+project_repo_url: git@github.com:devrishik/animate.git
 project_repo_remote: origin
+project_path: /home/{{user}}/animate_web
 domain_name: subdomain.domain.com
