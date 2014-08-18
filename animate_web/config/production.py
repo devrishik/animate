@@ -20,7 +20,7 @@ class Production(Common):
     # END DATABASE CONFIGURATION
 
     # SECRET KEY
-    SECRET_KEY = values.SecretValue()
+    SECRET_KEY = values.SecretValue('w)ca-a0xdt1!*m%uf0829_)^&w@(=x&ygzeymy1=1av)z#^*%e')
     # END SECRET KEY
 
     # django-secure
