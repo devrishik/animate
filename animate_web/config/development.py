@@ -21,6 +21,22 @@ class Development(Common):
     INSTALLED_APPS = Common.INSTALLED_APPS
     # END INSTALLED_APPS
 
+    # DATABASE CONFIGURATION
+    # See: https://docs.djangoproject.com/en/dev/ref/settings/#databases
+    # DATABASES = values.DatabaseURLValue('postgres://animate_web@localhost/animate_web')
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            #'NAME': normpath(join(DJANGO_ROOT,'hotelnow')), # for sqllite
+            'NAME': 'animate',
+            'USER': 'root',
+            'PASSWORD': '',
+            'HOST': '',
+            'PORT': '',
+        }
+    }
+    # END DATABASE CONFIGURATION
+
     # Mail settings
     EMAIL_HOST = "localhost"
     EMAIL_PORT = 1025
