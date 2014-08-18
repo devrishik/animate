@@ -1,0 +1,5 @@
+---
+project_name: animate_web
+project_repo_url: git@github.com:Fueled/repo_name.git
+project_repo_remote: origin
+domain_name: subdomain.domain.com
