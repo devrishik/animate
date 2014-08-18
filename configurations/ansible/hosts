@@ -1,3 +1,17 @@
+[production]
+dropbox-notifier.fueled.com
+
+[production:vars]
+user=ubuntu
+project_path=/home/ubuntu/dropbox_notify
+repo_version=dev
+django_requirements_file=configurations/pip/production.txt
+django_configuration=Production
+pg_db=dropbox_notify
+pg_user=dev
+pg_password=password
+
+
 [vagrant]
 192.168.1.10
 
