@@ -16,7 +16,7 @@ class Production(Common):
 
     # DATABASE CONFIGURATION
     # See: https://docs.djangoproject.com/en/dev/ref/settings/#databases
-    DATABASES = values.DatabaseURLValue('postgres://animate:password@localhost/animate_web')
+    DATABASES = values.DatabaseURLValue('postgres://dev:password@localhost/animate_web')
     # END DATABASE CONFIGURATION
 
     # SECRET KEY
