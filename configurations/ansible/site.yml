@@ -6,11 +6,11 @@
   sudo: true
 
   roles:
-    # - common
-    # - nginx
-    # - supervisor
-    # - redis
-    # - postgresql
+    - common
+    - nginx
+    - supervisor
+    - redis
+    - postgresql
     - project_data
     - django
     - gunicorn
